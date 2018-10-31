@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block titulo %}
+{% endblock %}
+{% block contenido %}
+<a href="{% url 'vista_agregar_aprendiz' %}" class="btn btn-primary btn-sm">Agregar Aprendiz</a>
+<div class="card mb-3">
+            <div class="card-header">
+              <i class="fas fa-table"></i>Detalles
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>nombre</th>
+                      <th>Identificacion</th>
+                      <th>Tipo documento</th>
+                      <th>Estado</th>
+                      <th>Ficha</th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>nombre</th>
+                      <th>Identificacion</th>
+                      <th>Tipo documento</th>
+                      <th>Estado</th>
+                      <th>Ficha</th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                 	{% for p in lista %}
+                 		<tr>
+                 			<td>{{p.nombre}}</td>
+                 			<td>{{p.identificacion}}</td>
+                 			<td>{{p.tipo_documento}}</td>
+                 			<td>{{p.estado}}</td>
+                 			<td>{% for c  in ficha %}
+        									<span class="label label-info"> {{c.numero_ficha}}</span>
+        								{% endfor %}
+        								{% if p.ficha.all %}
+        									{% for pc in p.ficha.all %}
+        										{{pc}}
+        									{% endfor %}
+        									{% endif %}
+        							</td>
+                      <td><a href="{% url 'vista_editar_aprendiz' id_apr=p.id %}" class="btn btn-primary">Editar</a></td>
+                      <td><a href="{% url 'vista_eliminar_aprendiz' id_apr=p.id %}" class="btn btn-primary">Eliminar</a></td>
+                 		</tr>
+                 		{% empty %}
+          						<tr>
+          							<td colspan="4">
+          								No hay Datos Registrados
+          							</td>
+          						</tr>
+                 	{% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card-footer small text-muted"></div>
+    </div>
+    
+{% endblock %}
+

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load bootstrap %}
+{% block titulo %}
+	
+{% endblock titulo %}
+{% block contenido %}
+	<form action="" method="POST" >
+		{% csrf_token %}
+        <div class="col-md-6">
+            
+            {{formulario|bootstrap}}
+      
+            {{ formset.management_form }}
+            </div> 
+        
+        {% for form in formset %}
+          
+            <div class="link-formset">
+              
+            {{ form.id }}
+            <ul>
+
+                      <div class="row">
+                        {{form|bootstrap}}
+                      
+                      </div>
+                   
+            </ul>
+
+            </div>
+            
+        {% endfor %}       
+		       
+                
+  
+		<input type="submit" value="AGREGAR PRESTAMO">
+	</form>
+
+
+  
+    <script>
+    $('.link-formset').formset({
+        addText: 'agregar',
+        deleteText: 'eliminar'
+    });
+</script>
+     <script>
+  $( function() {
+   
+    $( "#id_fecha_prestamo" ).datepicker();
+    $("#id_fecha_entrega").datepicker();
+  } );
+  </script>
+{% endblock contenido %}

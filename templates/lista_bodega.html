@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block titulo %}
+
+	lista de bodega
+
+{%endblock%}
+
+{%block contenido%}
+<a href="{%url 'vista_agregar_bodega'%}" class="btn btn-primary btn-sm">Agregar Bodega</a>
+<div class="card mb-3">
+            <div class="card-header">
+              <i class="fas fa-table"></i>Detalles
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>nombre</th>
+                      <th>foto</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>nombre</th>
+                      <th>foto</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                 	{% for p in lista %}
+                 		<tr>
+                 			<td>{{p.nombre}}</td>
+                 			<td><img src="/media/{{p.foto}}"></td>
+                 			<td><a href="{%url 'vista_ver_bodega' id_bod=p.id%}" class="btn btn-primary btn-sm">Detalles</a></td>
+                 			<td><a href="{%url 'vista_editar_bodega' id_bod=p.id%}" class="btn btn-primary btn-sm">Editar</a></td>
+                 			<td><a href="{%url 'vista_eliminar_bodega' id_bod=p.id%}" class="btn btn-primary btn-sm">Eliminar</a></td>
+                 		</tr>
+                 		{% empty %}
+          						<tr>
+          							<td colspan="4">
+          								No hay Datos Registrados
+          							</td>
+          						</tr>
+                 	{% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card-footer small text-muted"></div>
+    </div>
+
+{%endblock%}

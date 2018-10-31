@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block titulo %}
+	
+{% endblock titulo %}
+{% block contenido %}
+<a href="{% url 'agregar_prestamo' %}" class="btn btn-secondary">Agregar Prestamo</a>
+ <div class="card mb-3">
+            <div class="card-header">
+              <i class="fas fa-table"></i>
+              Lista de Prestamos</div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>fecha del prestamo</th>
+                      <th>estado</th>
+                      <th>cantidad</th>
+                      <th>aprendiz</th>
+                      <th>fecha de entrega</th>
+                      <th>ver Detalles</th>
+                   </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>fecha del prestamo</th>
+                      <th>estado</th>
+                      <th>cantidad</th>
+                      <th>aprendiz</th>
+                      <th>fecha de entrega</th>
+                      <th>ver Detalles</th>
+                  </tr>
+                  </tfoot>
+                  <tbody>
+						{% for p in lista %}
+
+							 <tr>
+                      			<td>{{p.fecha_prestamo}}</td>
+                      			<td>{{p.estado}}</td>
+			                    <td>{{p.cantidad_total}}</td>
+			                    <td>{{p.aprendiz}}</td>
+			                    <td>{{p.fecha_entrega}}</td>
+			                    <td>
+                          <a href="{% url 'editar_prestamo' id_prest=p.id %}">editar<a>
+                          <a href="{% url 'devolucion_prestamo' id_prest=p.id %}">devolucion<a>
+                          </td>
+			              	</tr>
+						{% endfor %}                  	
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+          </div>
+	
+{% endblock contenido %}

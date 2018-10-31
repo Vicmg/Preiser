@@ -1,0 +1,64 @@
+{% load staticfiles %}
+{% load bootstrap %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin - Iniciar Sesion</title>
+
+   <link rel="stylesheet" type="text/css" href="{% static "bootstrap/css/bootstrap.min.css" %}">
+   
+
+    <!-- Custom fonts for this template-->
+    <link rel="stylesheet" type="text/css" href="{% static "fontawesome-free/css/all.min.css" %}">
+    
+
+    <!-- Page level plugin CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static "datatables/dataTables.bootstrap4.css" %}">
+
+    <!-- Custom styles for this template-->
+    <link rel="stylesheet" type="text/css" href="{% static "css/sb-admin.css" %}">
+
+  </head>
+
+  <body id="cuerpologin" class="bg-dark1">
+
+    <div class="container">
+      <div id="flogin" class="card card-login mx-auto mt-5">
+        <div class="card-header" id="cabecilla">iniciar sesion</div>
+        <div class="card-body">
+          <form action="" method="POST">
+          	{% csrf_token %}
+          	{{formulario|bootstrap}}
+            <div class="form-group">
+              <h5>{{msj}}</h5>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" value="remember-me">
+                  Recordar contraseña
+                </label>
+              </div>
+            </div>
+            <input id="botoniniciar" type="submit" name="Iniciar" value="iniciar sesion" class="btn btn-primary btn-block">  
+          </form>
+        </div>
+      </div>
+    </div>
+
+   <!-- Bootstrap core JavaScript-->
+    <script src="{% static "jquery/jquery.min.js" %}"></script>
+    <script src="{% static "bootstrap/js/bootstrap.bundle.min.js" %}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{% static "jquery-easing/jquery.easing.min.js" %}"></script>
+
+  </body>
+
+</html>

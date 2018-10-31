@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load bootstrap %}
+{% block titulo %}
+{% endblock %}
+{% block contenido %}
+	<h1>Agregar Aprendiz</h1>
+
+	<form action="" method="POST">
+		{% csrf_token %}
+		    <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-6">
+                	{{formulario.nombre.errors}}
+                  <div class="form-label-group">
+                    {{formulario.nombre}}
+                    <label for="nombre">nombre</label>
+                  </div>
+                </div>
+              </div>
+           </div>
+
+           <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-6">
+                	{{formulario.identificacion.errors}}
+                  <div class="form-label-group">
+                    {{formulario.identificacion}}
+                    <label for="identificacion">Numero de Identificacion</label>
+                  </div>
+                </div>
+              </div>
+           </div>
+
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-6">
+                  {{formulario.tipo_documento.errors}}
+                  <div class="form-label-group">
+                    {{formulario.tipo_documento}}
+                    <label for="tipo_documento">Tipo de Documento</label>
+                  </div>
+                </div>
+              </div>
+           </div>
+
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-6">
+                  {{formulario.estado.errors}}
+                  <div class="form-label-group">
+                    {{formulario.estado}}
+                    <label for="{{formulario.estado.id_for_label}}">Estado</label>
+                  </div>
+                </div>
+              </div>
+           </div>
+
+           <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-6">
+                  {{formulario.ficha.errors}}
+                  <div class="form-label-group">
+                    {{formulario.ficha|bootstrap}}
+                  </div>
+                </div>
+              </div>
+           </div>
+        <button class="btn btn-primary">Registrar Aprendiz</button>
+	</form>		
+		
+{% endblock %}
